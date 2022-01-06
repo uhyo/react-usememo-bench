@@ -1,0 +1,13 @@
+.App > * {
+  width: max-content;
+  margin: 0 auto;
+}
+
+.App-header > h1 {
+  text-align: center;
+}
+
+.App-run-button {
+  font-size: 1.2em;
+  padding: 1ex;
+}
