@@ -41,15 +41,16 @@ export function useVisualizer() {
       return null;
     }
     return (
-      <table>
+      <table className="App-table">
+        <caption>Time spent for one rendering (ms)</caption>
         <thead>
           <tr>
             <td />
-            <th>min (ms)</th>
+            <th>min</th>
             {percentiles.map((at) => (
-              <th key={at}>{at}% (ms)</th>
+              <th key={at}>{at}%</th>
             ))}
-            <th>max (ms)</th>
+            <th>max</th>
           </tr>
         </thead>
         <tbody>

@@ -29,7 +29,8 @@ function App() {
         </button>
       </p>
       <hr />
-      {renderBenchStatus()}
+      <p>{renderBenchStatus()}</p>
+      <hr />
       {renderStats()}
       {renderBenchArea()}
     </div>

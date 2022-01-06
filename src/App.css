@@ -11,3 +11,7 @@
   font-size: 1.2em;
   padding: 1ex;
 }
+
+table.App-table th, table.App-table td {
+  padding: 4px;
+}
