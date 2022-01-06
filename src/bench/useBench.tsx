@@ -131,7 +131,7 @@ type BenchComponentProps = {
 };
 
 function createBenchComponent(
-  { N, renderTiming }: Controls,
+  { M, N, renderTiming }: Controls,
   mode: BenchMode
 ): React.ComponentType<BenchComponentProps> {
   const Content = (() => {
@@ -144,6 +144,11 @@ function createBenchComponent(
         return DivComponent;
     }
   })();
+
+  const Mnumbers: number[] = [];
+  for (let i = 0; i < M; i++) {
+    Mnumbers.push(i);
+  }
 
   switch (renderTiming) {
     case "first": {
@@ -160,7 +165,7 @@ function createBenchComponent(
           }
         }, [counter, reportTime]);
 
-        return <Content key={counter} />;
+        return <Content key={counter} numbers={Mnumbers} />;
       };
     }
     case "second": {
@@ -177,48 +182,56 @@ function createBenchComponent(
           }
         }, [counter, reportTime]);
 
-        return <Content />;
+        return <Content numbers={Mnumbers} />;
       };
     }
   }
 }
 
-const RawComponent: React.VFC = () => {
-  const _ = {
-    foo: Math.random(),
-  };
-  Math.random();
+type C = React.VFC<{ numbers: unknown[] }>;
+
+const RawComponent: C = ({ numbers }) => {
+  numbers.forEach(() => {
+    const _ = {
+      foo: Math.random(),
+    };
+    Math.random();
+  });
 
   return (
-    <p>
-      Hello, <em>my</em> world!
-    </p>
-  );
-};
-
-const UseMemoComponent: React.VFC = () => {
-  const _ = useMemo(() => {
-    foo: Math.random();
-  }, [Math.random()]);
-
-  return (
-    <p>
-      Hello, <em>my</em> world!
-    </p>
-  );
-};
-
-const DivComponent: React.VFC = () => {
-  const _ = {
-    foo: Math.random(),
-  };
-  Math.random();
-
-  return (
-    <div>
+    <>
       <p>
         Hello, <em>my</em> world!
       </p>
-    </div>
+    </>
+  );
+};
+
+const UseMemoComponent: C = ({ numbers }) => {
+  numbers.forEach(() => {
+    const _ = useMemo(() => {
+      foo: Math.random();
+    }, [Math.random()]);
+  });
+
+  return (
+    <>
+      <p>
+        Hello, <em>my</em> world!
+      </p>
+    </>
+  );
+};
+
+const DivComponent: C = ({ numbers }) => {
+  return (
+    <>
+      {numbers.map(() => (
+        <div />
+      ))}
+      <p>
+        Hello, <em>my</em> world!
+      </p>
+    </>
   );
 };
