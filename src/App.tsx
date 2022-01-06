@@ -16,6 +16,14 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>React useMemo Benchmark</h1>
+        <p>
+          <a
+            href="https://github.com/uhyo/react-usememo-bench"
+            rel="external noopener"
+          >
+            Code
+          </a>
+        </p>
       </header>
       <section>
         <h2>Settings</h2>
