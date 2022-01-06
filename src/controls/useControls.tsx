@@ -9,8 +9,8 @@ export type Controls = {
 };
 
 export const useControls = () => {
-  const [renderTiming, setRenderTiming] = useState<RenderTiming>("first");
-  const [Mstring, setM] = useState("1000");
+  const [renderTiming, setRenderTiming] = useState<RenderTiming>("second");
+  const [Mstring, setM] = useState("10000");
   const [Nstring, setN] = useState("1000");
 
   const renderTimingSelect = () => {
