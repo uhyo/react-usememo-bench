@@ -188,7 +188,7 @@ function createBenchComponent(
   }
 }
 
-type C = React.VFC<{ numbers: unknown[] }>;
+type C = React.VFC<{ numbers: number[] }>;
 
 const RawComponent: C = ({ numbers }) => {
   numbers.forEach(() => {
@@ -226,8 +226,8 @@ const UseMemoComponent: C = ({ numbers }) => {
 const DivComponent: C = ({ numbers }) => {
   return (
     <>
-      {numbers.map(() => (
-        <div />
+      {numbers.map((i) => (
+        <div key={i} />
       ))}
       <p>
         Hello, <em>my</em> world!
